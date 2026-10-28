@@ -1,0 +1,106 @@
+
+
+options { STATIC = false; }
+
+PARSER_BEGIN(Lexer)
+public class Lexer {
+    public static void main(String[] args) throws Exception {
+        if (args.length == 0) { System.out.println("usage:  java Lexer <file>"); return; }
+        Lexer lx = new Lexer(new java.io.FileInputStream(args[0]));
+        int n = 0;
+        for (Token t = lx.getNextToken(); t.kind != EOF; t = lx.getNextToken()) {
+            System.out.println(String.format("%-20s %s",
+                tokenImage[t.kind].replace("\"", ""), t.image));
+            n++;
+        }
+        System.out.println("---- " + n + " tokens ----");
+    }
+}
+PARSER_END(Lexer)
+
+
+SKIP : {
+      " "
+    | "\t"
+    | "\n"
+    | "\r"
+    | "\f"
+}
+
+
+/* keywords */
+TOKEN : {
+    < INT:     "int" >
+|   < IF:      "if" >
+|   < PRINTLN: "System.out.println" >
+|   < FLOAT: "float" >
+|   < STRING: "String" >
+|   < FOR: "for" >
+|   < WHILE: "while" >
+
+}
+
+
+/* identifiers */
+TOKEN : {
+< IDENTIFIER:
+    (["a"-"z", "A"-"Z", "_", "$"])
+    (["a"-"z", "A"-"Z", "0"-"9", "_", "$"])*
+>
+}
+
+
+/* numeric constants */
+TOKEN : {
+< NUMBER:
+    (["0"-"9"])+
+    ("." (["0"-"9"])+)?
+    (["e","E"] (["+","-"])? (["0"-"9"])+)?
+>
+}
+
+
+/* string constants */
+TOKEN : {
+< STRING_LITERAL:
+    "\"" (~["\"", "\n", "\r"])* "\""
+>
+}
+
+
+/* special characters */
+TOKEN : {
+    < SEMICOLON: ";" >
+|   < COMMA:     "," >
+|   < DOT:       "." >
+|   < COLON:     ":" >
+|   < LEFT_PAREN:  "(" >
+|   < RIGHT_PAREN: ")" >
+|   < LEFT_BRACE:  "{" >
+|   < RIGHT_BRACE: "}" >
+}
+
+
+/* operators */
+TOKEN : {
+    < ASSIGN:    "=" >
+|   < PLUS:      "+" >
+|   < MINUS:     "-" >
+|   < ASTERISK:  "*" >
+|   < SLASH:     "/" >
+|   < LESS_THAN: "<" >
+|   < GREATER_THAN: ">" >
+|   < LESS_EQUAL: "<=" >
+|   < GREATER_EQUAL: ">=" >
+|   < EQUAL: "==" >
+|   < NOT_EQUAL: "!=" >
+|   < INCREMENT: "++" >
+|   < PLUS_ASSIGN: "+=" >
+
+}
+
+
+TOKEN : {
+    < SINGLE_LINE_COMMENT: "//" (~["\n","\r"])* ("\n"|"\r"|"\r\n") >
+|   < MULTI_LINE_COMMENT:  "/*" (~["*"])* "*" (~["/"] (~["*"])* "*")* "/" >
+}
