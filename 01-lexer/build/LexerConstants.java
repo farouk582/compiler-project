@@ -9,71 +9,255 @@ public interface LexerConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int INT = 6;
+  int LINE_COMMENT = 6;
   /** RegularExpression Id. */
-  int IF = 7;
+  int BLOCK_COMMENT = 7;
   /** RegularExpression Id. */
-  int PRINTLN = 8;
+  int ABSTRACT = 8;
   /** RegularExpression Id. */
-  int FLOAT = 9;
+  int ASSERT = 9;
   /** RegularExpression Id. */
-  int STRING = 10;
+  int BOOLEAN = 10;
   /** RegularExpression Id. */
-  int FOR = 11;
+  int BREAK = 11;
   /** RegularExpression Id. */
-  int WHILE = 12;
+  int BYTE = 12;
   /** RegularExpression Id. */
-  int IDENTIFIER = 13;
+  int CASE = 13;
   /** RegularExpression Id. */
-  int NUMBER = 14;
+  int CATCH = 14;
   /** RegularExpression Id. */
-  int STRING_LITERAL = 15;
+  int CHAR = 15;
   /** RegularExpression Id. */
-  int SEMICOLON = 16;
+  int CLASS = 16;
   /** RegularExpression Id. */
-  int COMMA = 17;
+  int CONST = 17;
   /** RegularExpression Id. */
-  int DOT = 18;
+  int CONTINUE = 18;
   /** RegularExpression Id. */
-  int COLON = 19;
+  int DEFAULT_KEYWORD = 19;
   /** RegularExpression Id. */
-  int LEFT_PAREN = 20;
+  int DO = 20;
   /** RegularExpression Id. */
-  int RIGHT_PAREN = 21;
+  int DOUBLE = 21;
   /** RegularExpression Id. */
-  int LEFT_BRACE = 22;
+  int ELSE = 22;
   /** RegularExpression Id. */
-  int RIGHT_BRACE = 23;
+  int ENUM = 23;
   /** RegularExpression Id. */
-  int ASSIGN = 24;
+  int EXTENDS = 24;
   /** RegularExpression Id. */
-  int PLUS = 25;
+  int FINAL = 25;
   /** RegularExpression Id. */
-  int MINUS = 26;
+  int FINALLY = 26;
   /** RegularExpression Id. */
-  int ASTERISK = 27;
+  int FLOAT = 27;
   /** RegularExpression Id. */
-  int SLASH = 28;
+  int FOR = 28;
   /** RegularExpression Id. */
-  int LESS_THAN = 29;
+  int GOTO = 29;
   /** RegularExpression Id. */
-  int GREATER_THAN = 30;
+  int IF = 30;
   /** RegularExpression Id. */
-  int LESS_EQUAL = 31;
+  int IMPLEMENTS = 31;
   /** RegularExpression Id. */
-  int GREATER_EQUAL = 32;
+  int IMPORT = 32;
   /** RegularExpression Id. */
-  int EQUAL = 33;
+  int INSTANCEOF = 33;
   /** RegularExpression Id. */
-  int NOT_EQUAL = 34;
+  int INT = 34;
   /** RegularExpression Id. */
-  int INCREMENT = 35;
+  int INTERFACE = 35;
   /** RegularExpression Id. */
-  int PLUS_ASSIGN = 36;
+  int LONG = 36;
   /** RegularExpression Id. */
-  int SINGLE_LINE_COMMENT = 37;
+  int NATIVE = 37;
   /** RegularExpression Id. */
-  int MULTI_LINE_COMMENT = 38;
+  int NEW = 38;
+  /** RegularExpression Id. */
+  int PACKAGE = 39;
+  /** RegularExpression Id. */
+  int PRIVATE = 40;
+  /** RegularExpression Id. */
+  int PROTECTED = 41;
+  /** RegularExpression Id. */
+  int PUBLIC = 42;
+  /** RegularExpression Id. */
+  int RETURN = 43;
+  /** RegularExpression Id. */
+  int SHORT = 44;
+  /** RegularExpression Id. */
+  int STATIC = 45;
+  /** RegularExpression Id. */
+  int STRICTFP = 46;
+  /** RegularExpression Id. */
+  int SUPER = 47;
+  /** RegularExpression Id. */
+  int SWITCH = 48;
+  /** RegularExpression Id. */
+  int SYNCHRONIZED = 49;
+  /** RegularExpression Id. */
+  int THIS = 50;
+  /** RegularExpression Id. */
+  int THROW = 51;
+  /** RegularExpression Id. */
+  int THROWS = 52;
+  /** RegularExpression Id. */
+  int TRANSIENT = 53;
+  /** RegularExpression Id. */
+  int TRY = 54;
+  /** RegularExpression Id. */
+  int VOID = 55;
+  /** RegularExpression Id. */
+  int VOLATILE = 56;
+  /** RegularExpression Id. */
+  int WHILE = 57;
+  /** RegularExpression Id. */
+  int STRING = 58;
+  /** RegularExpression Id. */
+  int PRINTLN = 59;
+  /** RegularExpression Id. */
+  int MODULE = 60;
+  /** RegularExpression Id. */
+  int OPEN = 61;
+  /** RegularExpression Id. */
+  int OPENS = 62;
+  /** RegularExpression Id. */
+  int REQUIRES = 63;
+  /** RegularExpression Id. */
+  int TRANSITIVE = 64;
+  /** RegularExpression Id. */
+  int EXPORTS = 65;
+  /** RegularExpression Id. */
+  int TO = 66;
+  /** RegularExpression Id. */
+  int USES = 67;
+  /** RegularExpression Id. */
+  int PROVIDES = 68;
+  /** RegularExpression Id. */
+  int WITH = 69;
+  /** RegularExpression Id. */
+  int VAR = 70;
+  /** RegularExpression Id. */
+  int YIELD = 71;
+  /** RegularExpression Id. */
+  int RECORD = 72;
+  /** RegularExpression Id. */
+  int SEALED = 73;
+  /** RegularExpression Id. */
+  int PERMITS = 74;
+  /** RegularExpression Id. */
+  int BOOLEAN_LITERAL = 75;
+  /** RegularExpression Id. */
+  int NULL_LITERAL = 76;
+  /** RegularExpression Id. */
+  int IDENTIFIER = 77;
+  /** RegularExpression Id. */
+  int NUMBER = 78;
+  /** RegularExpression Id. */
+  int STRING_LITERAL = 79;
+  /** RegularExpression Id. */
+  int CHARACTER_LITERAL = 80;
+  /** RegularExpression Id. */
+  int SEMICOLON = 81;
+  /** RegularExpression Id. */
+  int COMMA = 82;
+  /** RegularExpression Id. */
+  int DOT = 83;
+  /** RegularExpression Id. */
+  int COLON = 84;
+  /** RegularExpression Id. */
+  int LEFT_PAREN = 85;
+  /** RegularExpression Id. */
+  int RIGHT_PAREN = 86;
+  /** RegularExpression Id. */
+  int LEFT_BRACE = 87;
+  /** RegularExpression Id. */
+  int RIGHT_BRACE = 88;
+  /** RegularExpression Id. */
+  int LEFT_BRACKET = 89;
+  /** RegularExpression Id. */
+  int RIGHT_BRACKET = 90;
+  /** RegularExpression Id. */
+  int ELLIPSIS = 91;
+  /** RegularExpression Id. */
+  int DOUBLE_COLON = 92;
+  /** RegularExpression Id. */
+  int ARROW = 93;
+  /** RegularExpression Id. */
+  int UNSIGNED_RIGHT_SHIFT_ASSIGN = 94;
+  /** RegularExpression Id. */
+  int RIGHT_SHIFT_ASSIGN = 95;
+  /** RegularExpression Id. */
+  int LEFT_SHIFT_ASSIGN = 96;
+  /** RegularExpression Id. */
+  int INCREMENT = 97;
+  /** RegularExpression Id. */
+  int DECREMENT = 98;
+  /** RegularExpression Id. */
+  int PLUS_ASSIGN = 99;
+  /** RegularExpression Id. */
+  int MINUS_ASSIGN = 100;
+  /** RegularExpression Id. */
+  int MULTIPLY_ASSIGN = 101;
+  /** RegularExpression Id. */
+  int DIVIDE_ASSIGN = 102;
+  /** RegularExpression Id. */
+  int REMAINDER_ASSIGN = 103;
+  /** RegularExpression Id. */
+  int EQUAL = 104;
+  /** RegularExpression Id. */
+  int NOT_EQUAL = 105;
+  /** RegularExpression Id. */
+  int LESS_EQUAL = 106;
+  /** RegularExpression Id. */
+  int GREATER_EQUAL = 107;
+  /** RegularExpression Id. */
+  int LOGICAL_AND = 108;
+  /** RegularExpression Id. */
+  int LOGICAL_OR = 109;
+  /** RegularExpression Id. */
+  int AND_ASSIGN = 110;
+  /** RegularExpression Id. */
+  int OR_ASSIGN = 111;
+  /** RegularExpression Id. */
+  int XOR_ASSIGN = 112;
+  /** RegularExpression Id. */
+  int LEFT_SHIFT = 113;
+  /** RegularExpression Id. */
+  int RIGHT_SHIFT = 114;
+  /** RegularExpression Id. */
+  int UNSIGNED_RIGHT_SHIFT = 115;
+  /** RegularExpression Id. */
+  int ASSIGN = 116;
+  /** RegularExpression Id. */
+  int PLUS = 117;
+  /** RegularExpression Id. */
+  int MINUS = 118;
+  /** RegularExpression Id. */
+  int ASTERISK = 119;
+  /** RegularExpression Id. */
+  int SLASH = 120;
+  /** RegularExpression Id. */
+  int REMAINDER = 121;
+  /** RegularExpression Id. */
+  int LESS_THAN = 122;
+  /** RegularExpression Id. */
+  int GREATER_THAN = 123;
+  /** RegularExpression Id. */
+  int LOGICAL_NOT = 124;
+  /** RegularExpression Id. */
+  int BITWISE_AND = 125;
+  /** RegularExpression Id. */
+  int BITWISE_OR = 126;
+  /** RegularExpression Id. */
+  int BITWISE_XOR = 127;
+  /** RegularExpression Id. */
+  int BITWISE_COMPLEMENT = 128;
+  /** RegularExpression Id. */
+  int QUESTION = 129;
+  /** RegularExpression Id. */
+  int AT = 130;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -86,16 +270,81 @@ public interface LexerConstants {
     "\"\\n\"",
     "\"\\r\"",
     "\"\\f\"",
-    "\"int\"",
-    "\"if\"",
-    "\"System.out.println\"",
+    "<LINE_COMMENT>",
+    "<BLOCK_COMMENT>",
+    "\"abstract\"",
+    "\"assert\"",
+    "\"boolean\"",
+    "\"break\"",
+    "\"byte\"",
+    "\"case\"",
+    "\"catch\"",
+    "\"char\"",
+    "\"class\"",
+    "\"const\"",
+    "\"continue\"",
+    "\"default\"",
+    "\"do\"",
+    "\"double\"",
+    "\"else\"",
+    "\"enum\"",
+    "\"extends\"",
+    "\"final\"",
+    "\"finally\"",
     "\"float\"",
-    "\"String\"",
     "\"for\"",
+    "\"goto\"",
+    "\"if\"",
+    "\"implements\"",
+    "\"import\"",
+    "\"instanceof\"",
+    "\"int\"",
+    "\"interface\"",
+    "\"long\"",
+    "\"native\"",
+    "\"new\"",
+    "\"package\"",
+    "\"private\"",
+    "\"protected\"",
+    "\"public\"",
+    "\"return\"",
+    "\"short\"",
+    "\"static\"",
+    "\"strictfp\"",
+    "\"super\"",
+    "\"switch\"",
+    "\"synchronized\"",
+    "\"this\"",
+    "\"throw\"",
+    "\"throws\"",
+    "\"transient\"",
+    "\"try\"",
+    "\"void\"",
+    "\"volatile\"",
     "\"while\"",
+    "\"String\"",
+    "\"System.out.println\"",
+    "\"module\"",
+    "\"open\"",
+    "\"opens\"",
+    "\"requires\"",
+    "\"transitive\"",
+    "\"exports\"",
+    "\"to\"",
+    "\"uses\"",
+    "\"provides\"",
+    "\"with\"",
+    "\"var\"",
+    "\"yield\"",
+    "\"record\"",
+    "\"sealed\"",
+    "\"permits\"",
+    "<BOOLEAN_LITERAL>",
+    "\"null\"",
     "<IDENTIFIER>",
     "<NUMBER>",
     "<STRING_LITERAL>",
+    "<CHARACTER_LITERAL>",
     "\";\"",
     "\",\"",
     "\".\"",
@@ -104,21 +353,48 @@ public interface LexerConstants {
     "\")\"",
     "\"{\"",
     "\"}\"",
+    "\"[\"",
+    "\"]\"",
+    "\"...\"",
+    "\"::\"",
+    "\"->\"",
+    "\">>>=\"",
+    "\">>=\"",
+    "\"<<=\"",
+    "\"++\"",
+    "\"--\"",
+    "\"+=\"",
+    "\"-=\"",
+    "\"*=\"",
+    "\"/=\"",
+    "\"%=\"",
+    "\"==\"",
+    "\"!=\"",
+    "\"<=\"",
+    "\">=\"",
+    "\"&&\"",
+    "\"||\"",
+    "\"&=\"",
+    "\"|=\"",
+    "\"^=\"",
+    "\"<<\"",
+    "\">>\"",
+    "\">>>\"",
     "\"=\"",
     "\"+\"",
     "\"-\"",
     "\"*\"",
     "\"/\"",
+    "\"%\"",
     "\"<\"",
     "\">\"",
-    "\"<=\"",
-    "\">=\"",
-    "\"==\"",
-    "\"!=\"",
-    "\"++\"",
-    "\"+=\"",
-    "<SINGLE_LINE_COMMENT>",
-    "<MULTI_LINE_COMMENT>",
+    "\"!\"",
+    "\"&\"",
+    "\"|\"",
+    "\"^\"",
+    "\"~\"",
+    "\"?\"",
+    "\"@\"",
   };
 
 }

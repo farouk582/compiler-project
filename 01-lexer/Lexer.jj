@@ -1,24 +1,28 @@
-
-
 options { STATIC = false; }
 
 PARSER_BEGIN(Lexer)
 public class Lexer {
     public static void main(String[] args) throws Exception {
-        if (args.length == 0) { System.out.println("usage:  java Lexer <file>"); return; }
+        if (args.length == 0) {
+            System.out.println("usage: java Lexer <file>");
+            return;
+        }
+
         Lexer lx = new Lexer(new java.io.FileInputStream(args[0]));
         int n = 0;
+
         for (Token t = lx.getNextToken(); t.kind != EOF; t = lx.getNextToken()) {
             System.out.println(String.format("%-20s %s",
                 tokenImage[t.kind].replace("\"", ""), t.image));
             n++;
         }
+
         System.out.println("---- " + n + " tokens ----");
     }
 }
 PARSER_END(Lexer)
 
-
+/* Ignore spaces and line breaks */
 SKIP : {
       " "
     | "\t"
@@ -27,80 +31,163 @@ SKIP : {
     | "\f"
 }
 
-
-/* keywords */
-TOKEN : {
-    < INT:     "int" >
-|   < IF:      "if" >
-|   < PRINTLN: "System.out.println" >
-|   < FLOAT: "float" >
-|   < STRING: "String" >
-|   < FOR: "for" >
-|   < WHILE: "while" >
-
+/* Ignore comments */
+SKIP : {
+      < LINE_COMMENT: "//" (~["\n", "\r"])* >
+    | < BLOCK_COMMENT: "/*" ( ~["*"] | ("*")+ ~["*", "/"] )* ("*")+ "/" >
 }
 
-
-/* identifiers */
+/* Java keywords and common type names */
 TOKEN : {
-< IDENTIFIER:
-    (["a"-"z", "A"-"Z", "_", "$"])
-    (["a"-"z", "A"-"Z", "0"-"9", "_", "$"])*
->
+      < ABSTRACT: "abstract" >
+    | < ASSERT: "assert" >
+    | < BOOLEAN: "boolean" >
+    | < BREAK: "break" >
+    | < BYTE: "byte" >
+    | < CASE: "case" >
+    | < CATCH: "catch" >
+    | < CHAR: "char" >
+    | < CLASS: "class" >
+    | < CONST: "const" >
+    | < CONTINUE: "continue" >
+    | < DEFAULT_KEYWORD: "default" >
+    | < DO: "do" >
+    | < DOUBLE: "double" >
+    | < ELSE: "else" >
+    | < ENUM: "enum" >
+    | < EXTENDS: "extends" >
+    | < FINAL: "final" >
+    | < FINALLY: "finally" >
+    | < FLOAT: "float" >
+    | < FOR: "for" >
+    | < GOTO: "goto" >
+    | < IF: "if" >
+    | < IMPLEMENTS: "implements" >
+    | < IMPORT: "import" >
+    | < INSTANCEOF: "instanceof" >
+    | < INT: "int" >
+    | < INTERFACE: "interface" >
+    | < LONG: "long" >
+    | < NATIVE: "native" >
+    | < NEW: "new" >
+    | < PACKAGE: "package" >
+    | < PRIVATE: "private" >
+    | < PROTECTED: "protected" >
+    | < PUBLIC: "public" >
+    | < RETURN: "return" >
+    | < SHORT: "short" >
+    | < STATIC: "static" >
+    | < STRICTFP: "strictfp" >
+    | < SUPER: "super" >
+    | < SWITCH: "switch" >
+    | < SYNCHRONIZED: "synchronized" >
+    | < THIS: "this" >
+    | < THROW: "throw" >
+    | < THROWS: "throws" >
+    | < TRANSIENT: "transient" >
+    | < TRY: "try" >
+    | < VOID: "void" >
+    | < VOLATILE: "volatile" >
+    | < WHILE: "while" >
+    | < STRING: "String" >
+    | < PRINTLN: "System.out.println" >
+    | < MODULE: "module" >
+    | < OPEN: "open" >
+    | < OPENS: "opens" >
+    | < REQUIRES: "requires" >
+    | < TRANSITIVE: "transitive" >
+    | < EXPORTS: "exports" >
+    | < TO: "to" >
+    | < USES: "uses" >
+    | < PROVIDES: "provides" >
+    | < WITH: "with" >
+    | < VAR: "var" >
+    | < YIELD: "yield" >
+    | < RECORD: "record" >
+    | < SEALED: "sealed" >
+    | < PERMITS: "permits" >
 }
 
-
-/* numeric constants */
+/* Boolean and null values */
 TOKEN : {
-< NUMBER:
-    (["0"-"9"])+
-    ("." (["0"-"9"])+)?
-    (["e","E"] (["+","-"])? (["0"-"9"])+)?
->
+      < BOOLEAN_LITERAL: "true" | "false" >
+    | < NULL_LITERAL: "null" >
 }
 
-
-/* string constants */
+/* Identifiers: variable, method and class names */
 TOKEN : {
-< STRING_LITERAL:
-    "\"" (~["\"", "\n", "\r"])* "\""
->
+    < IDENTIFIER: ["a"-"z", "A"-"Z", "_", "$"]
+                 (["a"-"z", "A"-"Z", "0"-"9", "_", "$"])* >
 }
 
-
-/* special characters */
+/* Integer and decimal numbers, with an optional exponent */
 TOKEN : {
-    < SEMICOLON: ";" >
-|   < COMMA:     "," >
-|   < DOT:       "." >
-|   < COLON:     ":" >
-|   < LEFT_PAREN:  "(" >
-|   < RIGHT_PAREN: ")" >
-|   < LEFT_BRACE:  "{" >
-|   < RIGHT_BRACE: "}" >
+    < NUMBER: (["0"-"9"])+
+              ("." (["0"-"9"])+)?
+              (["e", "E"] (["+", "-"])? (["0"-"9"])+)?
+              (["f", "F", "d", "D", "l", "L"])? >
 }
 
-
-/* operators */
+/* String and character values */
 TOKEN : {
-    < ASSIGN:    "=" >
-|   < PLUS:      "+" >
-|   < MINUS:     "-" >
-|   < ASTERISK:  "*" >
-|   < SLASH:     "/" >
-|   < LESS_THAN: "<" >
-|   < GREATER_THAN: ">" >
-|   < LESS_EQUAL: "<=" >
-|   < GREATER_EQUAL: ">=" >
-|   < EQUAL: "==" >
-|   < NOT_EQUAL: "!=" >
-|   < INCREMENT: "++" >
-|   < PLUS_ASSIGN: "+=" >
-
+      < STRING_LITERAL: "\"" ("\\" ~["\n", "\r"] | ~["\"", "\\", "\n", "\r"])* "\"" >
+    | < CHARACTER_LITERAL: "'" ("\\" ~["\n", "\r"] | ~["'", "\\", "\n", "\r"]) "'" >
 }
 
-
+/* Separators */
 TOKEN : {
-    < SINGLE_LINE_COMMENT: "//" (~["\n","\r"])* ("\n"|"\r"|"\r\n") >
-|   < MULTI_LINE_COMMENT:  "/*" (~["*"])* "*" (~["/"] (~["*"])* "*")* "/" >
+      < SEMICOLON: ";" >
+    | < COMMA: "," >
+    | < DOT: "." >
+    | < COLON: ":" >
+    | < LEFT_PAREN: "(" >
+    | < RIGHT_PAREN: ")" >
+    | < LEFT_BRACE: "{" >
+    | < RIGHT_BRACE: "}" >
+    | < LEFT_BRACKET: "[" >
+    | < RIGHT_BRACKET: "]" >
+}
+
+/* Operators */
+TOKEN : {
+      < ELLIPSIS: "..." >
+    | < DOUBLE_COLON: "::" >
+    | < ARROW: "->" >
+    | < UNSIGNED_RIGHT_SHIFT_ASSIGN: ">>>=" >
+    | < RIGHT_SHIFT_ASSIGN: ">>=" >
+    | < LEFT_SHIFT_ASSIGN: "<<=" >
+    | < INCREMENT: "++" >
+    | < DECREMENT: "--" >
+    | < PLUS_ASSIGN: "+=" >
+    | < MINUS_ASSIGN: "-=" >
+    | < MULTIPLY_ASSIGN: "*=" >
+    | < DIVIDE_ASSIGN: "/=" >
+    | < REMAINDER_ASSIGN: "%=" >
+    | < EQUAL: "==" >
+    | < NOT_EQUAL: "!=" >
+    | < LESS_EQUAL: "<=" >
+    | < GREATER_EQUAL: ">=" >
+    | < LOGICAL_AND: "&&" >
+    | < LOGICAL_OR: "||" >
+    | < AND_ASSIGN: "&=" >
+    | < OR_ASSIGN: "|=" >
+    | < XOR_ASSIGN: "^=" >
+    | < LEFT_SHIFT: "<<" >
+    | < RIGHT_SHIFT: ">>" >
+    | < UNSIGNED_RIGHT_SHIFT: ">>>" >
+    | < ASSIGN: "=" >
+    | < PLUS: "+" >
+    | < MINUS: "-" >
+    | < ASTERISK: "*" >
+    | < SLASH: "/" >
+    | < REMAINDER: "%" >
+    | < LESS_THAN: "<" >
+    | < GREATER_THAN: ">" >
+    | < LOGICAL_NOT: "!" >
+    | < BITWISE_AND: "&" >
+    | < BITWISE_OR: "|" >
+    | < BITWISE_XOR: "^" >
+    | < BITWISE_COMPLEMENT: "~" >
+    | < QUESTION: "?" >
+    | < AT: "@" >
 }

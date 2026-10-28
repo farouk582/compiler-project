@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0e221a4-6743-4917-9f14-75bb7a25b1e2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01-lexer/Lexer.jj" beforeDir="false" afterPath="$PROJECT_DIR$/01-lexer/Lexer.jj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides/JavaCC.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-lexer/build/Lexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/01-lexer/build/Lexer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-lexer/build/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/01-lexer/build/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-lexer/build/LexerConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/01-lexer/build/LexerConstants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-lexer/build/LexerConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/01-lexer/build/LexerConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-lexer/build/LexerTokenManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/01-lexer/build/LexerTokenManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-lexer/build/LexerTokenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/01-lexer/build/LexerTokenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-lexer/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01-lexer/test.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +23,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3LK589aM95WljPa9lwngtQ4GKnL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,7 +44,7 @@
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Compiler/compiler-project",
+    "last_opened_file_path": "D:/Compiler/CompilerProject",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
